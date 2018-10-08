@@ -35,10 +35,11 @@ public class HotelController {
 	 */
 	
 	@RequestMapping("/93.do")
-	public String study09Handle(Map map) {
-		map.put("json", "{\"rst \": true, \"keyword\":\"개천절\"}" );
+	public String study93Handle(Map map) {
+		map.put("json", "{\"rst\": true, \"keyword\":\"개천절\"}");
 		return "printJson";
 	}
+	
 		
 	
 }

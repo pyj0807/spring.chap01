@@ -23,7 +23,14 @@
 		base-package="controllers" />
 	<!-- <bean id="indexController" class="controllers.IndexController"/> 이 
 		Controller가 scan 대상에 포함익 때문에 따로 등록안해도 된다. -->
+	
 	<!-- viewResolver configuration -->
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles/*.xml"></property>
+	</bean>		
+	
+	
 	<!-- jsp로 만들때는 InternalResourceViewResolver -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -81,6 +88,9 @@
 	
 	<context:component-scan base-package="model"/>
 	
+	<!-- multipart resovler add (id를 꼭 반드시 이걸로 설정 )-->
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+	id="multipartResolver"/>
 	
 </beans>
 
