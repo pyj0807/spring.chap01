@@ -2,6 +2,7 @@ package controllers.study;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Provider.Service;
 
 import javax.servlet.ServletContext;
 
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import model.AlertService;
 
 /*
  * Multipart 처리 (File upload)
@@ -30,15 +33,23 @@ import org.springframework.web.multipart.MultipartFile;
 public class KiloController {
 
 	@Autowired
+	AlertService service;
+	
+	@Autowired
 	ServletContext ctx;
 
 	@RequestMapping("/26.do")
 	public String study26Handle() {
+		String json = "{\"mode\":\"upload\"}";
+		service.sendAll(json);
 		return "upload";
 	}
 
 	@RequestMapping("/27.do")
 	public void study27Handle(@RequestParam String info, @RequestParam MultipartFile attach) throws IOException {
+		
+		
+		
 		System.out.println("info =" + info);
 		System.out.println("attach =" + attach + "/" + attach.isEmpty());
 		// MultipartFile 객체는 첨부된 파일데이터가 없어도 생성된다, Empty 체크할것.
